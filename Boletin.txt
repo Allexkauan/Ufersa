@@ -1,0 +1,5 @@
+Nome 	 Nota 1 	 Nota2 	 Nota3 	 Media Final 	 Status do Aluno
+
+alex 	 10.00 	 9.00 	 8.00 	 9.00 	 o32\cmd.exe /c cls 
+pedro 	 5.00 	 6.00 	 7.00 	 6.00 	 Ú 
+jeff 	 2.00 	 3.00 	 4.00 	 3.00 	 Ú 
