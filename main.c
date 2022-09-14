@@ -18,6 +18,7 @@ void ler_boletin(int n, aluno *p)
 
     for (int i = 0; i < n; i++)
     {
+        
     }
 }
 
