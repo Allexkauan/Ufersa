@@ -10,6 +10,17 @@ typedef struct Aluno
     char nome[30];
 } aluno;
 
+void ler_boletin(int n, aluno *p)
+{
+    FILE *arq;
+
+    arq = fopen("Ler-Boletin.txt", "r");
+
+    for (int i = 0; i < n; i++)
+    {
+    }
+}
+
 void gerar_boletin(int n, aluno *p)
 {
     FILE *arq;
@@ -22,7 +33,7 @@ void gerar_boletin(int n, aluno *p)
     {
         fprintf(arq, "%s \t %.2f \t %.2f \t %.2f \t %.2f \t %s \n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
     }
-    arq = fclose(arq);
+    fclose(arq);
 }
 
 void calcular_media(aluno *p, int n)
@@ -33,11 +44,11 @@ void calcular_media(aluno *p, int n)
 
         if (p[i].media > 7)
         {
-            *p[i].status = 'Aprovado';
+            strcpy(p[i].status, "Aprovado");
         }
         else
         {
-            *p[i].status = "Reprovado";
+            strcpy(p[i].status, "Reprovado");
         }
     }
 }
@@ -63,6 +74,7 @@ int main()
     int menu;
     int tam;
     aluno *p;
+    int esc;
 
     do
     {
@@ -79,16 +91,45 @@ int main()
         {
 
         case 1:
-            printf("Quantos alunos quer cadastrar ?");
-            scanf("%d", &tam);
+            do
+            {
+                printf("1 - Cadastrar via teclado\n");
+                printf("2 - Cadastrar via arquivo\n");
+                printf("0 - Voltar ao menu");
+                scanf("%d", &esc);
+                system("cls");
 
-            p = (aluno *)malloc(tam * sizeof(aluno));
+                switch (esc)
+                {
+                case 1:
+                    printf("Quantos alunos quer cadastrar ?");
+                    scanf("%d", &tam);
 
-            cadastrar_notas(p, tam);
-            system("cls");
-            printf("Alunos cadastrados com Sucesso!!");
-            sleep(2);
-            system("cls");
+                    p = (aluno *)malloc(tam * sizeof(aluno));
+
+                    cadastrar_notas(p, tam);
+                    system("cls");
+                    printf("Alunos cadastrados com Sucesso!!");
+                    sleep(2);
+                    system("cls");
+                    break;
+
+                case 2:
+                    ler_boletin(tam, p);
+                    printf("Boletin lido com Sucesso!!");
+                    break;
+
+                case 0:
+                    system("cls");
+                    printf("Voltando ao Menu!!");
+                    sleep(1);
+                    break;
+
+                default:
+                    printf("Valor invalido, Tente novamente");
+                    break;
+                }
+            } while (esc != 0);
 
             break;
 
