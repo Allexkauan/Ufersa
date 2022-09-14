@@ -15,10 +15,15 @@ void ler_boletin(int n, aluno *p)
     FILE *arq;
 
     arq = fopen("Ler-Boletin.txt", "r");
-
-    for (int i = 0; i < n; i++)
+    if (arq == NULL)
     {
-        
+        printf("nao leu");
+    }
+    int i = 0;
+
+    while (fscanf(arq, "%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status) != EOF)
+    {
+        i++;
     }
 }
 
@@ -118,6 +123,16 @@ int main()
                 case 2:
                     ler_boletin(tam, p);
                     printf("Boletin lido com Sucesso!!");
+                    sleep(2);
+                    system("cls");
+                    printf("Nome\tNota 1\tNota 2\tNota 3\tMedia Final\tStatus do Aluno\n\n");
+                    for (int i = 0; i < tam; i++)
+                    {
+                        printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
+                    }
+                    system("pause");
+                    system("cls");
+
                     break;
 
                 case 0:

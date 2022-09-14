@@ -1,3 +1,3 @@
 2
-alex    10 10 10 10 aprovado
-pedro 5 5 5 5 reprovado
+alex    10  10  10  10  aprovado
+pedro   5   5   5   5   reprovado
