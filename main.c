@@ -142,7 +142,10 @@ int main()
                     break;
 
                 default:
-                    printf("Valor invalido, Tente novamente");
+                    system("cls");
+                    printf("Valor invalido, tente novamente!");
+                    sleep(2);
+                    system("cls");
                     break;
                 }
             } while (esc != 0);
