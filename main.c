@@ -10,9 +10,10 @@ typedef struct Aluno
     char nome[30];
 } aluno;
 
-void ler_boletin(int n, aluno *p)
+void ler_boletin(int n)
 {
     FILE *arq;
+    aluno *p;
 
     arq = fopen("Ler-Boletin.txt", "r");
     if (arq == NULL)
@@ -20,11 +21,14 @@ void ler_boletin(int n, aluno *p)
         printf("nao leu");
     }
     int i = 0;
-
-    while (fscanf(arq, "%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status) != EOF)
+    n = 0;
+    fscanf(arq, "%d", &n);
+    do
     {
+        fscanf(arq, "%[^\t]\t%f\t%f\t%f\t%f\t%[^\t]", p[i].nome, &p[i].n1, &p[i].n2, &p[i].n3, &p[i].media, p[i].status);
         i++;
-    }
+    } while (i < n);
+    fclose(arq);
 }
 
 void gerar_boletin(int n, aluno *p)
@@ -121,7 +125,7 @@ int main()
                     break;
 
                 case 2:
-                    ler_boletin(tam, p);
+                    ler_boletin(tam);
                     printf("Boletin lido com Sucesso!!");
                     sleep(2);
                     system("cls");

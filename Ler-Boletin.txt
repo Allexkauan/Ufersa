@@ -1,3 +1,4 @@
-2
+3
 alex    10  10  10  10  aprovado
 pedro   5   5   5   5   reprovado
+caio    6   6   6   6   reprovado

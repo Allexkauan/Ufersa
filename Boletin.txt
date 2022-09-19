@@ -1,5 +1,5 @@
 Nome 	 Nota 1 	 Nota2 	 Nota3 	 Media Final 	 Status do Aluno
 
 alex 	 10.00 	 10.00 	 10.00 	 10.00 	 Aprovado 
-pedro 	 7.00 	 8.00 	 9.00 	 8.00 	 Aprovado 
-italo 	 7.00 	 8.00 	 9.00 	 8.00 	 Aprovado 
+pedro 	 10.00 	 10.00 	 10.00 	 10.00 	 Aprovado 
+caio 	 10.00 	 10.00 	 10.00 	 10.00 	 Aprovado 
