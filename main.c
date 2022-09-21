@@ -23,11 +23,13 @@ void ler_boletin(int n)
     int i = 0;
     n = 0;
     fscanf(arq, "%d", &n);
-    do
+
+    while (!feof(arq))
     {
         fscanf(arq, "%[^\t]\t%f\t%f\t%f\t%f\t%[^\t]", p[i].nome, &p[i].n1, &p[i].n2, &p[i].n3, &p[i].media, p[i].status);
         i++;
-    } while (i < n);
+    }
+
     fclose(arq);
 }
 
