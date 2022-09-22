@@ -22,19 +22,22 @@ void ler_boletin(int n)
         printf("nao leu");
     }
 
-    fscanf(arq, "%d", &n);
+    // fscanf(arq, "%d", &n);
 
-    p = (aluno *)malloc(n * sizeof(aluno));
+    // p = (aluno *)malloc(n * sizeof(aluno));
 
     printf("%d valor de n antes do case\n", n);
 
     while (!feof(arq))
     {
-        // fwrite(arq, "%[^\t]\t%f\t%f\t%f\t%f\t%[^\t]", p[i].nome, &p[i].n1, &p[i].n2, &p[i].n3, &p[i].media, p[i].status);
         printf("%d valor de n dentro do for de leitura\n\n", n);
         fwrite(p, sizeof(aluno), n, arq);
+        p = (aluno *)malloc(n * sizeof(aluno));
+        fscanf(arq, "%d", &n);
+        printf("%d", n);
         fgets(p[i].nome, sizeof(p[i].nome), arq);
         fscanf(arq, "%f", p[i].n1);
+        printf("%f", p[i].n1);
         fscanf(arq, "%f", p[i].n2);
         fscanf(arq, "%f", p[i].n3);
         fscanf(arq, "%f", p[i].media);
@@ -50,7 +53,7 @@ void gerar_boletin(int n, aluno *p)
     FILE *arq;
 
     arq = fopen("Boletin.txt", "w");
-
+    
     fprintf(arq, "Nome \t Nota 1 \t Nota2 \t Nota3 \t Media Final \t Status do Aluno\n\n");
 
     for (int i = 0; i < n; i++)
@@ -142,12 +145,12 @@ int main()
                     ler_boletin(tam);
                     printf("Boletin lido com Sucesso!!");
                     sleep(2);
-                    system("cls");
+                    // system("cls");
                     printf("Nome\tNota 1\tNota 2\tNota 3\tMedia Final\tStatus do Aluno\n\n");
                     printf("%d valor de n dentro do case\n", tam);
                     for (int i = 0; i < 3; i++)
                     {
-                        // printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
+                        printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
                         printf("%d Valor do n dentro do for pra printar pro usuario\n\n", tam);
                     }
                     system("pause");
