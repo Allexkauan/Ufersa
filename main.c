@@ -2,99 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <TIME.H>
-
-typedef struct Aluno
-{
-    float n1, n2, n3, media;
-    char status[20];
-    char nome[30];
-} aluno;
-
-void ler_boletin(int n)
-{
-    FILE *arq;
-    aluno *p;
-    int i = 0;
-
-    arq = fopen("Ler-Boletin.txt", "r");
-    if (arq == NULL)
-    {
-        printf("nao leu");
-    }
-
-    // fscanf(arq, "%d", &n);
-
-    // p = (aluno *)malloc(n * sizeof(aluno));
-
-    printf("%d valor de n antes do case\n", n);
-
-    while (!feof(arq))
-    {
-        printf("%d valor de n dentro do for de leitura\n\n", n);
-        fwrite(p, sizeof(aluno), n, arq);
-        p = (aluno *)malloc(n * sizeof(aluno));
-        fscanf(arq, "%d", &n);
-        printf("%d", n);
-        fgets(p[i].nome, sizeof(p[i].nome), arq);
-        fscanf(arq, "%f", p[i].n1);
-        printf("%f", p[i].n1);
-        fscanf(arq, "%f", p[i].n2);
-        fscanf(arq, "%f", p[i].n3);
-        fscanf(arq, "%f", p[i].media);
-        fgets(p[i].status, sizeof(p[i].status), arq);
-        i++;
-    }
-
-    fclose(arq);
-}
-
-void gerar_boletin(int n, aluno *p)
-{
-    FILE *arq;
-
-    arq = fopen("Boletin.txt", "w");
-    
-    fprintf(arq, "Nome \t Nota 1 \t Nota2 \t Nota3 \t Media Final \t Status do Aluno\n\n");
-
-    for (int i = 0; i < n; i++)
-    {
-        fprintf(arq, "%s \t %.2f \t %.2f \t %.2f \t %.2f \t %s \n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
-    }
-    fclose(arq);
-}
-
-void calcular_media(aluno *p, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        p[i].media = (p[i].n1 + p[i].n2 + p[i].n3) / 3;
-
-        if (p[i].media > 7)
-        {
-            strcpy(p[i].status, "Aprovado");
-        }
-        else
-        {
-            strcpy(p[i].status, "Reprovado");
-        }
-    }
-}
-
-void cadastrar_notas(aluno *p, int tam)
-{
-    for (int i = 0; i < tam; i++)
-    {
-        printf("Digite o nome do Aluno: \t");
-        scanf("%s", p[i].nome);
-        printf("Digite as notas do Aluno: \n");
-        printf("Nota 1:\t");
-        scanf("%f", &p[i].n1);
-        printf("Nota 2:\t");
-        scanf("%f", &p[i].n2);
-        printf("Nota 3:\t");
-        scanf("%f", &p[i].n3);
-    }
-}
+#include "aluno.c"
 
 int main()
 {
@@ -102,6 +10,7 @@ int main()
     int tam;
     aluno *p;
     int esc;
+    FILE *arqv;
 
     do
     {
@@ -142,16 +51,17 @@ int main()
                     break;
 
                 case 2:
-                    ler_boletin(tam);
+                    p = (aluno *)malloc(maxAluno * sizeof(aluno));
+                    ler_boletin(p, &tam);
                     printf("Boletin lido com Sucesso!!");
                     sleep(2);
-                    // system("cls");
+                    system("cls");
                     printf("Nome\tNota 1\tNota 2\tNota 3\tMedia Final\tStatus do Aluno\n\n");
-                    printf("%d valor de n dentro do case\n", tam);
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < tam; i++)
                     {
-                        printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
-                        printf("%d Valor do n dentro do for pra printar pro usuario\n\n", tam);
+                        if(p[i].nome != "\0"){
+                            printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
+                        } else break;
                     }
                     system("pause");
                     system("cls");
