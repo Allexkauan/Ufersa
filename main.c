@@ -9,14 +9,15 @@ int main()
     int menu;
     int tam;
     aluno *p;
+    int submenu;
     int esc;
     FILE *arqv;
 
     do
     {
         printf("Digite o numero referente a necessidade!!\n");
-        printf("1 - Cadastrar notas\n");
-        printf("2 - Calcular media\n");
+        printf("1 - Cadastrar alunos\n");
+        printf("2 - Buscar Aluno\n");
         printf("3 - Gerar Boletin\n");
         printf("0 - Sair do sistema\n");
         scanf("%d", &menu);
@@ -38,12 +39,17 @@ int main()
                 switch (esc)
                 {
                 case 1:
-                    printf("Quantos alunos quer cadastrar ?");
+                    printf("Quantos alunos quer cadastrar ?\n");
                     scanf("%d", &tam);
 
-                    p = (aluno *)malloc(tam * sizeof(aluno));
+                    // p = (aluno *)malloc(tam * sizeof(aluno))
+                    p = (aluno *)realloc(p, tam * sizeof(aluno));
 
                     cadastrar_notas(p, tam);
+                    system("cls");
+                    calcular_media(p, tam);
+                    printf("Media calculada com Sucesso!!\n");
+                    sleep(2);
                     system("cls");
                     printf("Alunos cadastrados com Sucesso!!");
                     sleep(2);
@@ -59,13 +65,15 @@ int main()
                     printf("Nome\tNota 1\tNota 2\tNota 3\tMedia Final\tStatus do Aluno\n\n");
                     for (int i = 0; i < tam; i++)
                     {
-                        if(p[i].nome != "\0"){
+                        if (p[i].nome != "\0")
+                        {
                             printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
-                        } else break;
+                        }
+                        else
+                            break;
                     }
                     system("pause");
                     system("cls");
-
                     break;
 
                 case 0:
@@ -86,18 +94,50 @@ int main()
             break;
 
         case 2:
-            calcular_media(p, tam);
-            printf("Media calculada com Sucesso!!\n");
-            sleep(2);
-            system("cls");
-            printf("Nome\tNota 1\tNota 2\tNota 3\tMedia Final\tStatus do Aluno\n\n");
-            for (int i = 0; i < tam; i++)
+            do
             {
-                printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%s\n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
-            }
-            system("pause");
-            system("cls");
+                printf("1 - Buscar Pelo Nome\n");
+                printf("2 - Listar Maiores Notas\n");
+                printf("3 - Listar Aprovados");
+                printf("4 - Listar Reprovados");
+                printf("0 - Voltar ao Menu");
+                scanf("%d", &submenu);
+                system("cls");
 
+                switch (submenu)
+                {
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 0:
+                    system("cls");
+                    printf("Voltando ao Menu!!");
+                    sleep(1);
+                    break;
+
+                default:
+                    system("cls");
+                    printf("Valor invalido, tente novamente!");
+                    sleep(2);
+                    system("cls");
+                    break;
+                }
+            } while (esc != 0);
+
+            break;
             break;
 
         case 3:

@@ -41,11 +41,11 @@ void gerar_boletin(int n, aluno *p)
 
     arq = fopen("Boletin.txt", "w");
 
-    fprintf(arq, "Nome \t Nota 1 \t Nota2 \t Nota3 \t Media Final \t Status do Aluno\n\n");
+    fprintf(arq, "Nome \t Nota 1 \t Nota2 \t\t Nota3 \t\t Media Final \t Status do Aluno\n\n");
 
     for (int i = 0; i < n; i++)
     {
-        fprintf(arq, "%s \t %.2f \t %.2f \t %.2f \t %.2f \t %s \n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
+        fprintf(arq, "%s \t %.2f \t\t %.2f \t\t %.2f \t\t %.2f \t\t\t %s \n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
     }
     fclose(arq);
 }
@@ -56,7 +56,7 @@ void calcular_media(aluno *p, int n)
     {
         p[i].media = (p[i].n1 + p[i].n2 + p[i].n3) / 3;
 
-        if (p[i].media > 7)
+        if (p[i].media >= 7)
         {
             strcpy(p[i].status, "Aprovado");
         }
@@ -81,4 +81,14 @@ void cadastrar_notas(aluno *p, int tam)
         printf("Nota 3:\t");
         scanf("%f", &p[i].n3);
     }
+
+    FILE *arq;
+
+    arq = fopen("Boletin.txt", "a");
+
+    for (int i = 0; i < tam; i++)
+    {
+        fprintf(arq, "%s \t %.2f \t\t %.2f \t\t %.2f \t\t %.2f \t\t\t %s \n", p[i].nome, p[i].n1, p[i].n2, p[i].n3, p[i].media, p[i].status);
+    }
+    fclose(arq);
 }

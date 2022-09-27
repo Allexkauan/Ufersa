@@ -1,4 +1,3 @@
-Nome 	 Nota 1 	 Nota2 	 Nota3 	 Media Final 	 Status do Aluno
+Nome 	 Nota 1 	 Nota2 		 Nota3 		 Media Final 	 Status do Aluno
 
-alex 	 10.00 	 10.00 	 10.00 	 10.00 	 Aprovado 
-pedro 	 10.00 	 10.00 	 10.00 	 10.00 	 Aprovado 
+wallacy 	 9.00 		 8.00 		 6.00 		 7.67 			 Aprovado 
