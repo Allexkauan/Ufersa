@@ -42,8 +42,8 @@ int main()
                     printf("Quantos alunos quer cadastrar ?\n");
                     scanf("%d", &tam);
 
-                    // p = (aluno *)malloc(tam * sizeof(aluno))
-                    p = (aluno *)realloc(p, tam * sizeof(aluno));
+                    p = (aluno *)malloc(tam * sizeof(aluno));
+                    // p = (aluno *)realloc(p, tam * sizeof(aluno));
 
                     cadastrar_notas(p, tam);
                     system("cls");
